@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FollowerCollectionViewCell" customModule="URLSessionTaskWithCollectionView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSG-qY-o29">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lvq-8Q-ybY">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brazil" translatesAutoresizingMaskIntoConstraints="NO" id="T1L-mt-tzu">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="abC-Ap-mHv"/>
+                                            <constraint firstAttribute="width" constant="70" id="jAc-Vs-R5b"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61N-Vg-zng">
+                                        <rect key="frame" x="0.0" y="70" width="70" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lvq-8Q-ybY" firstAttribute="leading" secondItem="FSG-qY-o29" secondAttribute="leading" id="AqQ-Ww-tPh"/>
+                            <constraint firstItem="Lvq-8Q-ybY" firstAttribute="top" secondItem="FSG-qY-o29" secondAttribute="top" id="KHx-oz-I55"/>
+                            <constraint firstAttribute="trailing" secondItem="Lvq-8Q-ybY" secondAttribute="trailing" id="WAn-2f-PjY"/>
+                            <constraint firstAttribute="bottom" secondItem="Lvq-8Q-ybY" secondAttribute="bottom" id="qhk-9M-E4t"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FSG-qY-o29" secondAttribute="trailing" id="HEl-3f-JPd"/>
+                <constraint firstAttribute="bottom" secondItem="FSG-qY-o29" secondAttribute="bottom" id="JQU-f3-4lD"/>
+                <constraint firstItem="FSG-qY-o29" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="at7-GV-1i1"/>
+                <constraint firstItem="FSG-qY-o29" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="azf-90-rB2"/>
+            </constraints>
+            <size key="customSize" width="50" height="71"/>
+            <connections>
+                <outlet property="followerName" destination="61N-Vg-zng" id="ogf-Pd-6u4"/>
+                <outlet property="followerProfileImageView" destination="T1L-mt-tzu" id="oAf-Is-rvb"/>
+            </connections>
+            <point key="canvasLocation" x="91.603053435114504" y="26.760563380281692"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Brazil" width="500" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
