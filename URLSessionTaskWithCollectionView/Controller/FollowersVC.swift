@@ -28,6 +28,8 @@ class FollowersVC: UIViewController {
         searchFollowersBar.delegate = self
         
         filteredFollowers = followers
+        
+        navigationController?.navigationBar.tintColor = .black
     }
 }
 
@@ -51,17 +53,11 @@ extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource, UIS
         guard let followers = followers else {
             return
         }
-        
         if !searchText.isEmpty {
-            filteredFollowers = []
-            for follower in followers {
-                if follower.login.uppercased().contains(searchText.uppercased()) {
-                    filteredFollowers?.append(follower)
-                }
-            }
+            filteredFollowers = followers.filter { $0.login.uppercased().contains(searchText.uppercased()) }
         } else {
-            filteredFollowers  = followers
+            filteredFollowers = followers
         }
-        self.followersCollectionView.reloadData()
+        followersCollectionView.reloadData()
     }
 }

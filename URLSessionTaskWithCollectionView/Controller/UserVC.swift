@@ -47,12 +47,6 @@ class UserVC: UIViewController {
             if let user = self.user, let userName = user.name {
                 let baseString = "\(userName) has \(user.followers) followers"
                 let attributedString = NSMutableAttributedString(string: baseString)
-                
-                if let nameRange = baseString.range(of: userName) {
-                    let nsRange = NSRange(nameRange, in: baseString)
-                    attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: nsRange)
-                }
-                
                 let followersString = "\(user.followers)"
                 if let followersRange = baseString.range(of: followersString) {
                     let nsRange = NSRange(followersRange, in: baseString)
@@ -63,10 +57,7 @@ class UserVC: UIViewController {
             } else {
                 self.userNumberOfFollowersLabel.text = "Data unavailable"
             }
-            if let avatarURLString = self.user?.avatarUrl,
-               let avatarURL = URL(string: avatarURLString) {
-                self.userProfileImageView.kf.setImage(with: avatarURL)
-            }
+            self.userProfileImageView.kf.setImage(with: self.user?.fullAvatarURL)
         }
     }
 }

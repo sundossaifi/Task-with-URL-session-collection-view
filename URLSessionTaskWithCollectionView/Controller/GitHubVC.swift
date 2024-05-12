@@ -34,17 +34,17 @@ class GitHubVC: UIViewController {
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
             } else {
-                self.usernameTextField.layer.borderColor = UIColor.black.cgColor
+                self.usernameTextField.layer.borderColor = UIColor.gray.cgColor
                 self.usernameTextField.layer.borderWidth = 1.0
                 self.usernameTextField.attributedPlaceholder = NSAttributedString(
-                    string: "Please enter username",
+                    string: "Set Username",
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
                 )
                 self.loadingUserIndicator.isHidden = false
                 self.loadingUserIndicator.startAnimating()
                 self.submitUserButton.isEnabled = false
                 self.viewModel.getUser(userName: userName) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.loadingUserIndicator.isHidden = true
                         self.loadingUserIndicator.stopAnimating()
                         self.submitUserButton.isEnabled = true
@@ -56,9 +56,6 @@ class GitHubVC: UIViewController {
                         self.navigationController?.pushViewController(userVC, animated: true)
                     }
                 }
-//                Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { _ in
-//                    
-//                }
             }
         }
     }

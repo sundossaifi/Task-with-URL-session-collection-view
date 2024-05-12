@@ -25,4 +25,8 @@ struct Followers: Codable {
     let subscriptionsUrl: String
     let type: String
     let url: String
+    
+    var fullAvatarURL: URL? {
+        return URL(string: avatarUrl)
+    }
 }

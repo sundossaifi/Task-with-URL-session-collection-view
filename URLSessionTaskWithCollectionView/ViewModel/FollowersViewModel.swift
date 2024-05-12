@@ -21,16 +21,12 @@ class FollowersViewModel {
                 completion()
             } catch GHError.invalidURL {
                 print("invalid URL")
-                completion()
             } catch GHError.invalidData {
                 print("invalid data")
-                completion()
             } catch GHError.invalidResponse {
                 print("invalid Response")
-                completion()
             } catch {
                 print("unexpected error")
-                completion()
             }
         }
     }

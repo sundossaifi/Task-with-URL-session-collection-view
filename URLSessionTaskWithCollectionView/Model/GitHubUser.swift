@@ -40,4 +40,8 @@ struct GitHubUser: Codable {
     let following: Int
     let createdAt: String
     let updatedAt: String
+    
+    var fullAvatarURL: URL? {
+        return URL(string: avatarUrl)
+    }
 }

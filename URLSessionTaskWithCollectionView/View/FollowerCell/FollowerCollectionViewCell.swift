@@ -22,9 +22,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(follower: Followers) {
-        let avatarURLString = follower.avatarUrl
-        let avatarURL = URL(string: avatarURLString)
-        self.followerProfileImageView.kf.setImage(with: avatarURL)
+        self.followerProfileImageView.kf.setImage(with: follower.fullAvatarURL)
         self.followerName.text = follower.login
     }
 }

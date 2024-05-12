@@ -7,14 +7,29 @@
 
 import UIKit
 
+enum GitHubAPIConstants {
+    static let baseURL = "https://api.github.com/users/"
+}
+
+enum GitHubAPI {
+    case user(String)
+
+    var url: URL? {
+        switch self {
+        case .user(let userName):
+            return URL(string: GitHubAPIConstants.baseURL + userName)
+        }
+    }
+}
+
 public class UserAPICaller {
     static func getUser(userName: String) async throws -> GitHubUser {
-        let endPoint = "https://api.github.com/users/\(userName)"
-        guard let url = URL(string: endPoint) else {
+        guard let url = GitHubAPI.user(userName).url else {
             throw GHError.invalidURL
         }
+        
         let (data, response) = try await URLSession.shared.data(from: url)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw GHError.invalidResponse
         }
         
