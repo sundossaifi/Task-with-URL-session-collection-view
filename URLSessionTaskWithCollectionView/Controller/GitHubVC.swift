@@ -18,6 +18,7 @@ class GitHubVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUsernameTextField()
+        configureSubmitUserButton(isEnabled: true)
         loadingUserIndicator.isHidden = true
     }
     
@@ -34,7 +35,7 @@ class GitHubVC: UIViewController {
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
             } else {
-                self.usernameTextField.layer.borderColor = UIColor.gray.cgColor
+                self.usernameTextField.layer.borderColor = UIColor.systemGray5.cgColor
                 self.usernameTextField.layer.borderWidth = 1.0
                 self.usernameTextField.attributedPlaceholder = NSAttributedString(
                     string: "Set Username",
@@ -42,12 +43,12 @@ class GitHubVC: UIViewController {
                 )
                 self.loadingUserIndicator.isHidden = false
                 self.loadingUserIndicator.startAnimating()
-                self.submitUserButton.isEnabled = false
+                self.configureSubmitUserButton(isEnabled: false)
                 self.viewModel.getUser(userName: userName) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.loadingUserIndicator.isHidden = true
                         self.loadingUserIndicator.stopAnimating()
-                        self.submitUserButton.isEnabled = true
+                        self.configureSubmitUserButton(isEnabled: true)
                         guard let userVC = self.storyboard?.instantiateViewController(withIdentifier: "UserVC") as? UserVC else {
                             return
                         }
@@ -62,8 +63,18 @@ class GitHubVC: UIViewController {
     
     func configureUsernameTextField() {
         usernameTextField.layer.cornerRadius = usernameTextField.frame.height/2
-        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        usernameTextField.layer.borderColor = UIColor.systemGray5.cgColor
         usernameTextField.layer.borderWidth = 1.0
         usernameTextField.layer.masksToBounds = true
+        usernameTextField.addPadding()
+    }
+    
+    func configureSubmitUserButton(isEnabled: Bool) {
+        submitUserButton.isEnabled = isEnabled
+        submitUserButton.layer.cornerRadius = 5
+        submitUserButton.backgroundColor = .darkGray
+        let color = isEnabled ? UIColor.white : UIColor.white
+        submitUserButton.setTitleColor(color, for: .normal)
+        submitUserButton.setTitleColor(color, for: .disabled)
     }
 }

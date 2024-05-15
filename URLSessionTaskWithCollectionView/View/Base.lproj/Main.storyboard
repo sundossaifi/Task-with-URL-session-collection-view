@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zrw-4M-UTO">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,8 +29,9 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzM-Y0-M15">
-                                <rect key="frame" x="20" y="728" width="353" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzM-Y0-M15">
+                                <rect key="frame" x="20" y="738" width="353" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="yNp-Sc-laa"/>
                                 </constraints>
@@ -38,6 +39,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="submitUsername:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v8A-2a-7uh"/>
@@ -68,7 +70,7 @@
                             <constraint firstItem="xHO-V8-WeG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7BA-sp-2QT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qzM-Y0-M15" secondAttribute="trailing" constant="20" id="9CG-nY-KDM"/>
                             <constraint firstItem="H0R-dg-ZSx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="9Ky-OH-b06"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qzM-Y0-M15" secondAttribute="bottom" constant="45" id="9Sq-er-2C5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qzM-Y0-M15" secondAttribute="bottom" constant="35" id="9Sq-er-2C5"/>
                             <constraint firstItem="aCe-iS-2Rc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IN7-UA-hq3"/>
                             <constraint firstItem="HJv-pL-jWD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="Ixz-2F-b8F"/>
                             <constraint firstItem="HJv-pL-jWD" firstAttribute="top" secondItem="H0R-dg-ZSx" secondAttribute="bottom" constant="40" id="KSu-zJ-nm2"/>
@@ -110,7 +112,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXJ-d0-VXZ">
-                                <rect key="frame" x="20" y="728" width="353" height="45"/>
+                                <rect key="frame" x="20" y="738" width="353" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="6do-56-ilO"/>
                                 </constraints>
@@ -163,7 +165,7 @@
                             <constraint firstItem="KXJ-d0-VXZ" firstAttribute="leading" secondItem="jV8-78-ddM" secondAttribute="leading" constant="20" id="URx-ig-lqg"/>
                             <constraint firstItem="jV8-78-ddM" firstAttribute="trailing" secondItem="KXJ-d0-VXZ" secondAttribute="trailing" constant="20" id="WTO-9M-ya7"/>
                             <constraint firstItem="aeQ-2q-dTA" firstAttribute="leading" secondItem="jV8-78-ddM" secondAttribute="leading" constant="40" id="gvQ-b2-nlP"/>
-                            <constraint firstItem="jV8-78-ddM" firstAttribute="bottom" secondItem="KXJ-d0-VXZ" secondAttribute="bottom" constant="45" id="i9j-FC-NrD"/>
+                            <constraint firstItem="jV8-78-ddM" firstAttribute="bottom" secondItem="KXJ-d0-VXZ" secondAttribute="bottom" constant="35" id="i9j-FC-NrD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="HYM-dX-UAP"/>
@@ -198,8 +200,8 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KZK-KD-QVI">
                                 <rect key="frame" x="0.0" y="179" width="393" height="639"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Iyj-Ad-Du1">
-                                    <size key="itemSize" width="0.0" height="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Iyj-Ad-Du1">
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>

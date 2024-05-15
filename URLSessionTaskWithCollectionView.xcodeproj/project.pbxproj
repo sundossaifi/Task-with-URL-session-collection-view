@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE15A92F2BF44D1F00EDD9F0 /* TextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15A92E2BF44D1F00EDD9F0 /* TextFieldPadding.swift */; };
 		CE81F58E2BEA43C1009A29E3 /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81F58D2BEA43C1009A29E3 /* FollowersViewModel.swift */; };
 		CE81F5902BEA4998009A29E3 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81F58F2BEA4998009A29E3 /* Followers.swift */; };
 		CE8770CC2BEA39D600F58CE0 /* UserFollowersAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8770CB2BEA39D600F58CE0 /* UserFollowersAPICaller.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE15A92E2BF44D1F00EDD9F0 /* TextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPadding.swift; sourceTree = "<group>"; };
 		CE81F58D2BEA43C1009A29E3 /* FollowersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewModel.swift; sourceTree = "<group>"; };
 		CE81F58F2BEA4998009A29E3 /* Followers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		CE8770CB2BEA39D600F58CE0 /* UserFollowersAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowersAPICaller.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CEBFE3E22BE82430001D831E /* CollectionViewCellNib.swift */,
+				CE15A92E2BF44D1F00EDD9F0 /* TextFieldPadding.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				CEF0E9AB2BE97FBD0078DC81 /* GHError.swift in Sources */,
 				CEBFE3C02BE7FF46001D831E /* SceneDelegate.swift in Sources */,
 				CEBFE3E32BE82430001D831E /* CollectionViewCellNib.swift in Sources */,
+				CE15A92F2BF44D1F00EDD9F0 /* TextFieldPadding.swift in Sources */,
 				CE8770CC2BEA39D600F58CE0 /* UserFollowersAPICaller.swift in Sources */,
 				CEF0E9A82BE96FB80078DC81 /* GitHubUser.swift in Sources */,
 				CEBFE3DC2BE823B1001D831E /* FollowersVC.swift in Sources */,

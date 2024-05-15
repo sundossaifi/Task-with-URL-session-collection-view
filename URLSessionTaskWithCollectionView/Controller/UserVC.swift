@@ -52,7 +52,6 @@ class UserVC: UIViewController {
                     let nsRange = NSRange(followersRange, in: baseString)
                     attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: nsRange)
                 }
-
                 self.userNumberOfFollowersLabel.attributedText = attributedString
             } else {
                 self.userNumberOfFollowersLabel.text = "Data unavailable"

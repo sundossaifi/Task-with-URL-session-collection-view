@@ -33,7 +33,7 @@ class FollowersVC: UIViewController {
     }
 }
 
-extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let filteredFollowers = filteredFollowers else {
             return 0
@@ -48,7 +48,9 @@ extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource, UIS
         }
         return cell
     }
-    
+}
+
+extension FollowersVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let followers = followers else {
             return
@@ -59,5 +61,26 @@ extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource, UIS
             filteredFollowers = followers
         }
         followersCollectionView.reloadData()
+    }
+}
+
+extension FollowersVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth = followersCollectionView.frame.width
+        let cellWidth = (collectionViewWidth - 50) / 4
+        let cellHeight = cellWidth + 20
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }
