@@ -8,26 +8,42 @@
 import UIKit
 
 class FollowersViewModel {
-    var followers:[Followers]?
-    
-    init(followers: [Followers]? = nil) {
-        self.followers = followers
+    private let userFollowersURL: String
+    var onUpdate: (() -> Void)?
+    var onError: ((String) -> Void)?
+
+    private var allFollowers: [Followers] = [] {
+        didSet {
+            filteredFollowers = allFollowers
+        }
+    }
+
+    var filteredFollowers: [Followers] = [] {
+        didSet {
+            onUpdate?()
+        }
+    }
+
+    init(userFollowersURL: String) {
+        self.userFollowersURL = userFollowersURL
+        fetchFollowers()
     }
     
-    func getFollowers(userFollowersURL: String, completion: @escaping () -> Void) {
+    private func fetchFollowers() {
         Task {
             do {
-                followers = try await UserFollowersAPICaller.getFollowers(userFollowersURL: userFollowersURL)
-                completion()
-            } catch GHError.invalidURL {
-                print("invalid URL")
-            } catch GHError.invalidData {
-                print("invalid data")
-            } catch GHError.invalidResponse {
-                print("invalid Response")
+                allFollowers = try await UserFollowersAPICaller.getFollowers(userFollowersURL: userFollowersURL)
             } catch {
-                print("unexpected error")
+                onError?("Failed to fetch followers.")
             }
+        }
+    }
+
+    func filterFollowers(searchText: String) {
+        if searchText.isEmpty {
+            filteredFollowers = allFollowers
+        } else {
+            filteredFollowers = allFollowers.filter { $0.login.uppercased().contains(searchText.uppercased()) }
         }
     }
 }

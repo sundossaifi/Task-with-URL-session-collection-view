@@ -6,45 +6,59 @@
 //
 
 import UIKit
+import Toast
 
 class FollowersVC: UIViewController {
 
     @IBOutlet weak var followersCollectionView: UICollectionView!
     @IBOutlet weak var searchFollowersBar: UISearchBar!
     
-    var followers: [Followers]?
-    var filteredFollowers: [Followers]?
+    var viewModel: FollowersViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configureCollectionView()
+        configureSearchBar()
+        setupViewModel()
     }
     
-    func configureView() {
+    private func setupViewModel() {
+        viewModel?.onUpdate = { [weak self] in
+            DispatchQueue.main.async {
+                self?.followersCollectionView.reloadData()
+            }
+        }
+        viewModel?.onError = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.view.makeToast(error)
+            }
+        }
+    }
+    
+    
+    
+    func configureCollectionView() {
         followersCollectionView.dataSource = self
         followersCollectionView.delegate = self
         followersCollectionView.register(FollowerCollectionViewCell.nib(), forCellWithReuseIdentifier: FollowerCollectionViewCell.identifier)
-        
-        searchFollowersBar.delegate = self
-        
-        filteredFollowers = followers
-        
+            
         navigationController?.navigationBar.tintColor = .black
     }
+    
+    func configureSearchBar() {
+            searchFollowersBar.delegate = self
+        }
 }
 
 extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let filteredFollowers = filteredFollowers else {
-            return 0
-        }
-       return filteredFollowers.count
+        return viewModel?.filteredFollowers.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = followersCollectionView.dequeueReusableCell(withReuseIdentifier: FollowerCollectionViewCell.identifier, for: indexPath) as! FollowerCollectionViewCell
-        if let filteredFollowers = filteredFollowers {
-            cell.configureCell(follower: filteredFollowers[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCollectionViewCell.identifier, for: indexPath) as! FollowerCollectionViewCell
+        if let follower = viewModel?.filteredFollowers[indexPath.row] {
+            cell.configureCell(follower: follower)
         }
         return cell
     }
@@ -52,15 +66,7 @@ extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension FollowersVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let followers = followers else {
-            return
-        }
-        if !searchText.isEmpty {
-            filteredFollowers = followers.filter { $0.login.uppercased().contains(searchText.uppercased()) }
-        } else {
-            filteredFollowers = followers
-        }
-        followersCollectionView.reloadData()
+        viewModel?.filterFollowers(searchText: searchText)
     }
 }
 

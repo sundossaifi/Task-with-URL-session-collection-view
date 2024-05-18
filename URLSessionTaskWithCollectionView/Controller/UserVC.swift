@@ -16,27 +16,27 @@ class UserVC: UIViewController {
     @IBOutlet weak var userNumberOfFollowersLabel: UILabel!
     @IBOutlet weak var getFollowersButtton: UIButton!
     
-    let viewModel: FollowersViewModel = FollowersViewModel()
     var userViewModel: UserViewModel?
-    @IBAction func getFollowers(_ sender: Any) {
-        guard let user = self.userViewModel?.user else {
-            return
-        }
-        viewModel.getFollowers(userFollowersURL: user.followersUrl) {
-            DispatchQueue.main.async {
-                guard let followersVC = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as? FollowersVC else {
-                    return
-                }
-                followersVC.followers = self.viewModel.followers
-                self.navigationController?.pushViewController(followersVC, animated: true)
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUserProfileImageView()
         setupBindings()
+    }
+    
+    @IBAction func getFollowers(_ sender: Any) {
+        guard let user = self.userViewModel?.user else {
+                print("User details not found.")
+                return
+            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) // Replace "Main" with your storyboard name if different
+            if let followersVC = storyboard.instantiateViewController(withIdentifier: "followersVC") as? FollowersVC {
+                let viewModel = FollowersViewModel(userFollowersURL: user.followersUrl)
+                followersVC.viewModel = viewModel
+                self.navigationController?.pushViewController(followersVC, animated: true)
+            } else {
+                print("Could not instantiate FollowersVC")
+            }
     }
     
     func configureUserProfileImageView() {

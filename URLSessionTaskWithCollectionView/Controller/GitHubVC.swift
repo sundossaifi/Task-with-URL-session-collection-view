@@ -30,6 +30,7 @@ class GitHubVC: UIViewController {
     }
     
     func configureUsernameTextField() {
+        usernameTextField.addPadding()
         usernameTextField.layer.cornerRadius = usernameTextField.frame.height / 2
         usernameTextField.layer.borderColor = UIColor.systemGray5.cgColor
         usernameTextField.layer.borderWidth = 1.0
@@ -75,6 +76,7 @@ extension GitHubVC: GitHubViewModelDelegate {
     
     func updateUsernameFieldWith(error: String) {
         DispatchQueue.main.async {
+            self.usernameTextField.addPadding()
             self.usernameTextField.layer.borderColor = UIColor.red.cgColor
             self.usernameTextField.attributedPlaceholder = NSAttributedString(
                 string: error,
