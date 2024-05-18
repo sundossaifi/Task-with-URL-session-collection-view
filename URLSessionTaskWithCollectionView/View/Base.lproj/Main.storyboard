@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GitHub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA8-IX-EgE">
-                                <rect key="frame" x="155.33333333333334" y="59" width="82.666666666666657" height="30"/>
+                                <rect key="frame" x="155.33333333333334" y="89" width="82.666666666666657" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-dg-ZSx">
-                                <rect key="frame" x="30" y="109.00000000000001" width="333" height="46.666666666666671"/>
+                                <rect key="frame" x="30" y="139" width="333" height="46.666666666666657"/>
                                 <string key="text">GitHub,Inc. is a platform and cloud-based service for software development and version control using Git, allowing developers to store and manage their code.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,13 +49,13 @@
                                 <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJv-pL-jWD">
-                                <rect key="frame" x="35" y="195.66666666666666" width="328" height="20.333333333333343"/>
+                                <rect key="frame" x="35" y="225.66666666666666" width="328" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aCe-iS-2Rc">
-                                <rect key="frame" x="20" y="231" width="353" height="40"/>
+                                <rect key="frame" x="20" y="261" width="353" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RYz-wp-uxU"/>
                                 </constraints>
@@ -77,7 +77,7 @@
                             <constraint firstItem="qzM-Y0-M15" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Lll-my-pjf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aCe-iS-2Rc" secondAttribute="trailing" constant="20" id="SoV-cs-bC1"/>
                             <constraint firstItem="oA8-IX-EgE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YeH-So-SIB"/>
-                            <constraint firstItem="oA8-IX-EgE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hy5-nb-3S3"/>
+                            <constraint firstItem="oA8-IX-EgE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="hy5-nb-3S3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HJv-pL-jWD" secondAttribute="trailing" constant="30" id="kvs-nq-XnD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H0R-dg-ZSx" secondAttribute="trailing" constant="30" id="n9z-F0-DtL"/>
                             <constraint firstItem="H0R-dg-ZSx" firstAttribute="top" secondItem="oA8-IX-EgE" secondAttribute="bottom" constant="20" id="ujc-vb-3Sx"/>
