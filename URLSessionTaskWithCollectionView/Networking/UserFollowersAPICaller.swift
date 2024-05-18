@@ -8,12 +8,14 @@
 import UIKit
 
 class UserFollowersAPICaller {
-    static func getFollowers(userFollowersURL: String) async throws -> [Followers] {
-        guard let url = URL(string: userFollowersURL) else {
+    static func getFollowers(userFollowersURL: String, page: Int) async throws -> [Followers] {
+        let urlString = "\(userFollowersURL)?page=\(page)"
+        guard let url = URL(string: urlString) else {
             throw GHError.invalidURL
         }
+        
         let (data, response) = try await URLSession.shared.data(from: url)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw GHError.invalidResponse
         }
         
@@ -22,9 +24,6 @@ class UserFollowersAPICaller {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return try decoder.decode([Followers].self, from: data)
         } catch {
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                            print("Failed to decode. Received JSON: \(json)")
-                        }
             throw GHError.invalidData
         }
     }

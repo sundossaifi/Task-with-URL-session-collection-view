@@ -9,6 +9,8 @@ import UIKit
 
 class FollowersViewModel {
     private let userFollowersURL: String
+    private var currentPage = 1
+    private var isLoading = false
     var onUpdate: (() -> Void)?
     var onError: ((String) -> Void)?
 
@@ -30,13 +32,26 @@ class FollowersViewModel {
     }
     
     private func fetchFollowers() {
+        guard !isLoading else { return }
+        isLoading = true
+        
         Task {
             do {
-                allFollowers = try await UserFollowersAPICaller.getFollowers(userFollowersURL: userFollowersURL)
+                let newFollowers = try await UserFollowersAPICaller.getFollowers(userFollowersURL: userFollowersURL, page: currentPage)
+                allFollowers += newFollowers
+                if !newFollowers.isEmpty {
+                    currentPage += 1
+                }
+                isLoading = false
             } catch {
-                onError?("Failed to fetch followers.")
+                onError?("Failed to fetch followers: \(error)")
+                isLoading = false
             }
         }
+    }
+    
+    func fetchNextPage() {
+        fetchFollowers()
     }
 
     func filterFollowers(searchText: String) {
@@ -45,5 +60,9 @@ class FollowersViewModel {
         } else {
             filteredFollowers = allFollowers.filter { $0.login.uppercased().contains(searchText.uppercased()) }
         }
+    }
+    
+    func getFollowersCount() -> Int {
+        return allFollowers.count
     }
 }

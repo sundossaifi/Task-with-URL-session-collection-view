@@ -56,11 +56,20 @@ extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCollectionViewCell.identifier, for: indexPath) as! FollowerCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCollectionViewCell.identifier, for: indexPath) as? FollowerCollectionViewCell else {
+            fatalError("The dequeued cell is not an instance of ColorsListCell.")
+        }
         if let follower = viewModel?.filteredFollowers[indexPath.row] {
             cell.configureCell(follower: follower)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let count = viewModel?.getFollowersCount() else { return  }
+        if indexPath.item == count-1 {
+            viewModel?.fetchNextPage()
+        }
     }
 }
 
