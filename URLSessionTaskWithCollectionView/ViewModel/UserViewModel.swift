@@ -8,26 +8,45 @@
 import UIKit
 
 class UserViewModel {
-    var user: GitHubUser?
+    var user: GitHubUser? {
+        didSet {
+            userDataUpdated?()
+        }
+    }
+    var userDataUpdated: (() -> Void)?
     
-    init(user: GitHubUser? = nil) {
+    var userName: String? {
+        return user?.name ?? "No name available"
+    }
+    
+    var userBio: String? {
+        return user?.bio ?? "No bio provided"
+    }
+    
+    var followersAttributedText: NSAttributedString? {
+        guard let user = user else {
+            return NSAttributedString(string: "Followers: Unavailable")
+        }
+        let followersCount = user.followers
+        let baseString = "\(user.name ?? "The user") has \(followersCount) followers"
+        let attributedString = NSMutableAttributedString(string: baseString)
+        let followersString = "\(followersCount)"
+        if let followersRange = baseString.range(of: followersString) {
+            let nsRange = NSRange(followersRange, in: baseString)
+            attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: nsRange)
+        }
+        return attributedString
+    }
+    
+    var userAvatarURL: URL? {
+        return user?.fullAvatarURL
+    }
+    
+    init(user: GitHubUser?) {
         self.user = user
     }
     
-    func getUser(userName: String, completion: @escaping () -> Void) {
-        Task{
-            do {
-                user = try await UserAPICaller.getUser(userName: userName)
-                completion()
-            } catch GHError.invalidURL {
-                print("invalid URL")
-            } catch GHError.invalidData {
-                print("invalid data")
-            } catch GHError.invalidResponse {
-                print("invalid Response")
-            } catch {
-                print("unexpected error")
-            }
-        }
+    func triggerInitialDataUpdate() {
+        userDataUpdated?()
     }
 }

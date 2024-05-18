@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE15A92F2BF44D1F00EDD9F0 /* TextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15A92E2BF44D1F00EDD9F0 /* TextFieldPadding.swift */; };
+		CE4898A52BF4FD98003755B9 /* GitHubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4898A42BF4FD98003755B9 /* GitHubViewModel.swift */; };
+		CE4898A82BF4FF7C003755B9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CE4898A72BF4FF7C003755B9 /* Toast */; };
 		CE81F58E2BEA43C1009A29E3 /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81F58D2BEA43C1009A29E3 /* FollowersViewModel.swift */; };
 		CE81F5902BEA4998009A29E3 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81F58F2BEA4998009A29E3 /* Followers.swift */; };
 		CE8770CC2BEA39D600F58CE0 /* UserFollowersAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8770CB2BEA39D600F58CE0 /* UserFollowersAPICaller.swift */; };
@@ -31,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		CE15A92E2BF44D1F00EDD9F0 /* TextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPadding.swift; sourceTree = "<group>"; };
+		CE4898A42BF4FD98003755B9 /* GitHubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubViewModel.swift; sourceTree = "<group>"; };
 		CE81F58D2BEA43C1009A29E3 /* FollowersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewModel.swift; sourceTree = "<group>"; };
 		CE81F58F2BEA4998009A29E3 /* Followers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		CE8770CB2BEA39D600F58CE0 /* UserFollowersAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowersAPICaller.swift; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4898A82BF4FF7C003755B9 /* Toast in Frameworks */,
 				CEF0E9B52BE9A07F0078DC81 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +125,7 @@
 		CEBFE3D52BE8230D001D831E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE4898A42BF4FD98003755B9 /* GitHubViewModel.swift */,
 				CEF0E9B12BE98F510078DC81 /* UserViewModel.swift */,
 				CE81F58D2BEA43C1009A29E3 /* FollowersViewModel.swift */,
 			);
@@ -190,6 +195,7 @@
 			name = URLSessionTaskWithCollectionView;
 			packageProductDependencies = (
 				CEF0E9B42BE9A07F0078DC81 /* Kingfisher */,
+				CE4898A72BF4FF7C003755B9 /* Toast */,
 			);
 			productName = URLSessionTaskWithCollectionView;
 			productReference = CEBFE3BA2BE7FF46001D831E /* URLSessionTaskWithCollectionView.app */;
@@ -221,6 +227,7 @@
 			mainGroup = CEBFE3B12BE7FF46001D831E;
 			packageReferences = (
 				CEF0E9B32BE9A07F0078DC81 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CE4898A62BF4FF7C003755B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CEBFE3BB2BE7FF46001D831E /* Products */;
 			projectDirPath = "";
@@ -265,6 +272,7 @@
 				CEBFE3DC2BE823B1001D831E /* FollowersVC.swift in Sources */,
 				CEBFE3D22BE811AB001D831E /* UserVC.swift in Sources */,
 				CE81F58E2BEA43C1009A29E3 /* FollowersViewModel.swift in Sources */,
+				CE4898A52BF4FD98003755B9 /* GitHubViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +495,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE4898A62BF4FF7C003755B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		CEF0E9B32BE9A07F0078DC81 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -498,6 +514,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE4898A72BF4FF7C003755B9 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE4898A62BF4FF7C003755B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		CEF0E9B42BE9A07F0078DC81 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEF0E9B32BE9A07F0078DC81 /* XCRemoteSwiftPackageReference "Kingfisher" */;

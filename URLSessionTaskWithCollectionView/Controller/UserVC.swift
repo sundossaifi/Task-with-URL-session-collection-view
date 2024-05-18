@@ -16,11 +16,10 @@ class UserVC: UIViewController {
     @IBOutlet weak var userNumberOfFollowersLabel: UILabel!
     @IBOutlet weak var getFollowersButtton: UIButton!
     
-    var user: GitHubUser?
     let viewModel: FollowersViewModel = FollowersViewModel()
-    
+    var userViewModel: UserViewModel?
     @IBAction func getFollowers(_ sender: Any) {
-        guard let user = self.user else {
+        guard let user = self.userViewModel?.user else {
             return
         }
         viewModel.getFollowers(userFollowersURL: user.followersUrl) {
@@ -36,27 +35,35 @@ class UserVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configureUserProfileImageView()
+        setupBindings()
     }
     
-    func configureView() {
-        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
-        DispatchQueue.main.async {
-            self.usernameLabel.text = self.user?.name
-            self.userBioLabel.text = self.user?.bio
-            if let user = self.user, let userName = user.name {
-                let baseString = "\(userName) has \(user.followers) followers"
-                let attributedString = NSMutableAttributedString(string: baseString)
-                let followersString = "\(user.followers)"
-                if let followersRange = baseString.range(of: followersString) {
-                    let nsRange = NSRange(followersRange, in: baseString)
-                    attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: nsRange)
-                }
-                self.userNumberOfFollowersLabel.attributedText = attributedString
+    func configureUserProfileImageView() {
+        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height / 2
+    }
+    
+    func setupBindings() {
+        userViewModel?.userDataUpdated = { [weak self] in
+            self?.updateUI()
+        }
+        userViewModel?.triggerInitialDataUpdate()
+    }
+    
+    func updateUI() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.usernameLabel.text = self.userViewModel?.userName
+            self.userBioLabel.text = self.userViewModel?.userBio
+            self.userNumberOfFollowersLabel.attributedText = self.userViewModel?.followersAttributedText
+            
+            if let imageUrl = self.userViewModel?.userAvatarURL {
+                self.userProfileImageView.kf.setImage(with: imageUrl)
             } else {
-                self.userNumberOfFollowersLabel.text = "Data unavailable"
+                self.userProfileImageView.image = UIImage(systemName: "person.fill")
             }
-            self.userProfileImageView.kf.setImage(with: self.user?.fullAvatarURL)
         }
     }
 }
+
