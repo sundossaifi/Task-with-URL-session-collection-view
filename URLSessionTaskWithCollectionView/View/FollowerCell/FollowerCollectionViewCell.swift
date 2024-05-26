@@ -17,7 +17,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         configureView()
     }
     
-   private func configureView() {
+    private func configureView() {
         followerProfileImageView.layer.cornerRadius = followerProfileImageView.frame.height/2
     }
     

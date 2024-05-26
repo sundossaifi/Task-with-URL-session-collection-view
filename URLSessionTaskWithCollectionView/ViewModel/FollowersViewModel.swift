@@ -13,19 +13,19 @@ class FollowersViewModel {
     private var isLoading = false
     var onUpdate: (() -> Void)?
     var onError: ((String) -> Void)?
-
+    
     private var allFollowers: [Followers] = [] {
         didSet {
             filteredFollowers = allFollowers
         }
     }
-
+    
     var filteredFollowers: [Followers] = [] {
         didSet {
             onUpdate?()
         }
     }
-
+    
     init(userFollowersURL: String) {
         self.userFollowersURL = userFollowersURL
         fetchFollowers()
@@ -53,7 +53,7 @@ class FollowersViewModel {
     func fetchNextPage() {
         fetchFollowers()
     }
-
+    
     func filterFollowers(searchText: String) {
         if searchText.isEmpty {
             filteredFollowers = allFollowers

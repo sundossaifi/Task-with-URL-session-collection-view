@@ -9,7 +9,7 @@ import UIKit
 import Toast
 
 class FollowersVC: UIViewController {
-
+    
     @IBOutlet weak var followersCollectionView: UICollectionView!
     @IBOutlet weak var searchFollowersBar: UISearchBar!
     
@@ -41,13 +41,13 @@ class FollowersVC: UIViewController {
         followersCollectionView.dataSource = self
         followersCollectionView.delegate = self
         followersCollectionView.register(FollowerCollectionViewCell.nib(), forCellWithReuseIdentifier: FollowerCollectionViewCell.identifier)
-            
+        
         navigationController?.navigationBar.tintColor = .black
     }
     
     func configureSearchBar() {
-            searchFollowersBar.delegate = self
-        }
+        searchFollowersBar.delegate = self
+    }
 }
 
 extension FollowersVC: UICollectionViewDelegate, UICollectionViewDataSource {

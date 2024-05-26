@@ -9,7 +9,7 @@ import UIKit
 import Toast
 
 class GitHubVC: UIViewController {
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var loadingUserIndicator: UIActivityIndicatorView!
     @IBOutlet weak var submitUserButton: UIButton!
@@ -88,7 +88,7 @@ extension GitHubVC: GitHubViewModelDelegate {
     private func navigateToUserViewController(with user: GitHubUser?) {
         guard let userVC = storyboard?.instantiateViewController(withIdentifier: "UserVC") as? UserVC,
               let user = user else { return }
-
+        
         let userViewModel = UserViewModel(user: user)
         userVC.userViewModel = userViewModel
         let navController = UINavigationController(rootViewController: userVC)

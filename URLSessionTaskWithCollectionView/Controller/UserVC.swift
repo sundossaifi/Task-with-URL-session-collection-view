@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class UserVC: UIViewController {
-
+    
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userBioLabel: UILabel!
@@ -26,17 +26,17 @@ class UserVC: UIViewController {
     
     @IBAction func getFollowers(_ sender: Any) {
         guard let user = self.userViewModel?.user else {
-                print("User details not found.")
-                return
-            }
-            let storyboard = UIStoryboard(name: "Main", bundle: nil) // Replace "Main" with your storyboard name if different
-            if let followersVC = storyboard.instantiateViewController(withIdentifier: "followersVC") as? FollowersVC {
-                let viewModel = FollowersViewModel(userFollowersURL: user.followersUrl)
-                followersVC.viewModel = viewModel
-                self.navigationController?.pushViewController(followersVC, animated: true)
-            } else {
-                print("Could not instantiate FollowersVC")
-            }
+            print("User details not found.")
+            return
+        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let followersVC = storyboard.instantiateViewController(withIdentifier: "followersVC") as? FollowersVC {
+            let viewModel = FollowersViewModel(userFollowersURL: user.followersUrl)
+            followersVC.viewModel = viewModel
+            self.navigationController?.pushViewController(followersVC, animated: true)
+        } else {
+            print("Could not instantiate FollowersVC")
+        }
     }
     
     func configureUserProfileImageView() {

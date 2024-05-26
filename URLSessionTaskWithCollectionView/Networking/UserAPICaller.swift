@@ -13,7 +13,7 @@ enum GitHubAPIConstants {
 
 enum GitHubAPI {
     case user(String)
-
+    
     var url: URL? {
         switch self {
         case .user(let userName):
